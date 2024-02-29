@@ -22,54 +22,66 @@
             <span id="turnDisplay">Turn 1</span>
             <button class="roll-button">Roll!</button>
         </div>
+        
         <div class="bottom-container">
-            <div class="grid-container">
+            <div id="grid-container">
+
+                <div id="id-1s" class="grid-item"><span class="label">1's</span></div>
+                <div id="id-1s-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-2s" class="grid-item"><span class="label">2's</span></div>
+                <div id="id-2s-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-3s" class="grid-item"><span class="label">3's</span></div>
+                <div id="id-3s-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-4s" class="grid-item"><span class="label">4's</span></div>
+                <div id="id-4s-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-5s" class="grid-item"><span class="label">5's</span></div>
+                <div id="id-5s-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-6s" class="grid-item"><span class="label">6's</span></div>
+                <div id="id-6s-text"><input for="sum"type="text" class="txtbox" readonly></div>
+
+                <div id="id-one-pair" class="grid-item"><span class="label">One pair</span></div>
+                <div id="id-one-pair-text"><input for="sum"type="text" class="txtbox"  readonly></div>
+                
+                <div id="id-two-pair" class="grid-item"><span class="label">Two pair</span></div>
+                <div id="id-two-pair-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-three-same" class="grid-item"><span class="label">Three same</span></div>
+                <div id="id-three-same-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-four-same" class="grid-item"><span class="label">Four same</span></div>
+                <div id="id-four-same-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-full-house" class="grid-item"><span class="label">Full house</span></div>
+                <div id="id-full-house-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-small-straight" class="grid-item"><span class="label">Small straight</span></div>
+                <div id="id-small-straight-text"><input for="sum"type="text" class="txtbox" readonly></div>
+
+                <div id="id-large-straight" class="grid-item"><span class="label">Large straight</span></div>
+                <div id="id-large-straight-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-chance" class="grid-item"><span class="label">Chance</span></div>
+                <div id="id-chance-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-yatzy" class="grid-item"><span class="label">Yatzy</span></div>
+                <div id="id-yatzy-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-sum" class="grid-item"><span class="label">Sum:</span></div>
+                <div id="id-sum-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-bonus" class="grid-item"><span class="label">Bonus:</span></div>
+                <div id="id-bonus-text"><input for="sum"type="text" class="txtbox" readonly></div>
+                
+                <div id="id-total" class="grid-item"><span class="label">Total:</span></div>
+                <div id="id-total-text"><input for="sum"type="text" class="txtbox" readonly></div>
             
-            <div class="grid-box-left">
-                <div class="grid-item">1's</div>
-                <input for="sum"type="text" class="txtbox" id="1's" readonly>
-                <div class="grid-item">2's</div>
-                <input for="sum"type="text" class="txtbox" id="2's" readonly>
-                <div class="grid-item">3's</div>
-                <input for="sum"type="text" class="txtbox" id="3's" readonly>
-                <div class="grid-item">4's</div>
-                <input for="sum"type="text" class="txtbox" id="4's" readonly>
-                <div class="grid-item">5's</div>
-                <input for="sum"type="text" class="txtbox" id="5's" readonly>
-                <div class="grid-item">6's</div>
-                <input for="sum"type="text" class="txtbox" id="6's" readonly>
-                <div class="grid-item">One pair</div>
-                <input for="sum"type="text" class="txtbox" id="one_pair" readonly>
-                <div class="grid-item">Two pairs</div>
-                <input for="sum"type="text" class="txtbox" id="two_pair" readonly>
-                <div class="grid-item">Three same</div>
-                <input for="sum"type="text" class="txtbox" id="three_same" readonly>
-                <div class="grid-item">Four Same</div>
-                <input for="sum"type="text" class="txtbox" id="four_same" readonly>
-                <div class="grid-item">Full house</div>
-                <input for="sum"type="text" class="txtbox" id="full_house" readonly>
-                <div class="grid-item">Small straight</div>
-                <input for="sum"type="text" class="txtbox" id="small_straight" readonly>
-                <div class="grid-item">Large straight</div>
-                <input for="sum"type="text" class="txtbox" id="large_straight" readonly>
-                <div class="grid-item">Chance</div>
-                <input for="sum"type="text" class="txtbox" id="chance" readonly>
-                <div class="grid-item">Yatzy</div>
-                <input for="sum"type="text" class="txtbox" id="yatzy" readonly>
-            </div>
-            <div class="grid-box-middle">
-                <div class="grid-item-middle">Sum:</div>
-                <input for="sum"type="text" class="txtbox" id="sum" readonly>
-            </div>
-            <div class="grid-box-right">
-                <div class="grid-item-right">Bonus:</div>
-                <input for="sum"type="text" class="txtbox" id="bonus" readonly>
-                <div class="grid-item-right">Total:</div>
-                <input for="sum"type="text" class="txtbox" id="total" readonly>
             </div>
         </div> 
-    </div>        
-        
-</div>        
+    </div>               
 </body>
 </html>
