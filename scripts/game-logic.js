@@ -1,3 +1,5 @@
-export function randomName() {
+
+
+export default function randomName() {
     console.log("object");
 }
