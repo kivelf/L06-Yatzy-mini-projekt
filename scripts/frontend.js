@@ -1,3 +1,5 @@
-import randomName from "./game-logic.js";
+import * as gameLogic from "./game-logic.js";
 
-randomName();
+
+
+console.log(gameLogic.diceValues);

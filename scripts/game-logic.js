@@ -17,7 +17,7 @@ export let throwCount = 0;
 export let roundCount = 0;
 
 // Random number generator.
-function getRandomInt() {
+export function getRandomInt() {
     return Math.floor(Math.random() * 6) + 1;
   }
 
@@ -26,7 +26,7 @@ function getRandomInt() {
  /**
      * Reset the throw count.
      */
-function resetThrowCount() {
+ export function resetThrowCount() {
     throwCount = 0;
     roundCount++;
     for (let i = 0; i < diceValues.length; i++) {
@@ -39,7 +39,7 @@ function resetThrowCount() {
      * Note: holdStatus[index] is true, if die no. index is hold (for index in [0..4]).
      */
 
- function rollDice(holdStatus) {
+ export function rollDice(holdStatus) {
     for (let i = 0; i < holdStatus.length; i++){
         if (!holdStatus[i]){
             values[i] = getRandomInt();
@@ -56,7 +56,7 @@ function resetThrowCount() {
      * if you don't want use it.
      */
 
-function getResults() {
+export function getResults() {
         let results = new Array(15);
         for (let i = 0; i < 6; i++) {
             results[i] = sameValuePoints(i + 1);
@@ -81,7 +81,7 @@ function getResults() {
     // Index 0 is not used.
     // Note: This method can be used in several of the following methods.
 
-    function frequency() {
+    export function frequency() {
         let currentFrequency = new Array(7);
         for (faceValue in diceValues){
             currentFrequency[faceValue]++;
@@ -178,7 +178,7 @@ function getResults() {
      * Return points for large straight.<br/>
      * Return 0, if the dice aren't showing 2,3,4,5,6.
      */
-    function largeStraightPoints() {
+    export function largeStraightPoints() {
         let frequency = frequency();
         let haveLargeStraight = true;
         let bigStraight = 0;
@@ -197,7 +197,7 @@ function getResults() {
      * Return points for chance (the sum of face values).
      */
     
-    function chancePoints() {
+    export function chancePoints() {
         let frequency = frequency();
         let sum = 0;
         for (let i = 1; i <= 6; i++){
@@ -211,7 +211,7 @@ function getResults() {
      * Return 0, if there aren't 5 dice with the same face value.
      */
 
-    function yatzyPoints() {
+    export function yatzyPoints() {
         let frequency = frequency();
         let yatzy = 0;
         for (let i = 1; i <= 6; i++) {
