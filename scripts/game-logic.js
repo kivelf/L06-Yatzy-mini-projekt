@@ -92,7 +92,7 @@ export function getResults() {
      * Returns 0, if no dice has the given face value.<br/>
      * Pre: 1 <= value <= 6;
      */
-    function sameValuePoints(value) {
+    export function sameValuePoints(value) {
         let frequency = getFrequency();
         let sameValuePoints = frequency[value] * value;
         return sameValuePoints;
@@ -103,7 +103,7 @@ export function getResults() {
      * Return points for one pair (for the face value giving the highest points).<br/>
      * Return 0, if there aren't 2 dice with the same face value.
      */
-    function onePairPoints() {
+    export function onePairPoints() {
         let frequency = getFrequency();
         let pairPoints = 0;
         for (let i = 6; i >= 1; i--) {
@@ -122,7 +122,7 @@ export function getResults() {
      * Return 0, if there aren't 2 dice with the same face value<br/>
      * and 2 other dice with the same but different face value.
      */
-    function twoPairPoints() {
+    export function twoPairPoints() {
         let frequency = getFrequency();
         let lowerPairPoints = 0;
         let highestPairPoints = onePairPoints();
@@ -150,14 +150,32 @@ export function getResults() {
      * Return points for 3 of a kind.<br/>
      * Return 0, if there aren't 3 dice with the same face value.
      */
-    
+    export function threeSamePoints() {
+        let frequency = frequency();
+        let triplePoints = 0;
+        for (let i = 1; i <= 6; i++){
+            if (frequency[i] >= 3){
+                triplePoints = i * 3;
+            }
+        }
+        return triplePoints;
+    }
 
 
     /**
      * Return points for 4 of a kind.<br/>
      * Return 0, if there aren't 4 dice with the same face value.
      */
-    
+    export function fourSamePoints() {
+        let frequency = frequency();
+        let quadruplePoints = 0;
+        for (let i = 1; i <= 6; i++){
+            if (frequency[i] >= 4){
+                quadruplePoints = i * 4;
+            }
+        }
+        return quadruplePoints;
+    }
 
     /**
      * Return points for full house.<br/>
