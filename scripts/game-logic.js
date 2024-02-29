@@ -2,8 +2,16 @@ export default function randomName() {
     console.log("object");
 }
 
-/* Array for dice values*/
-export let diceValues = new Array(5);
+
+
+export const dices = [
+    {value: 0, id: 0, lockedState: true},
+    {value: 0, id: 0, lockedState: true},
+    {value: 0, id: 0, lockedState: true},
+    {value: 0, id: 0, lockedState: true},
+    {value: 0, id: 0, lockedState: true}
+];
+
 
 // Variable for Number of times the 5 dice have been thrown.
 
@@ -27,8 +35,8 @@ function getRandomInt() {
  export function resetThrowCount() {
     throwCount = 0;
     roundCount++;
-    for (let i = 0; i < diceValues.length; i++) {
-        diceValues[i] = 0;
+    for (let i = 0; i < dices.length; i++) {
+        dices.value[i] = 0;
     }
 }
 
