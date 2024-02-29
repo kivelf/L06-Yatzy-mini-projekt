@@ -1,3 +1,3 @@
-import randomName from "scripts/game-logic.js";
+import randomName from "./game-logic.js";
 
 randomName();
