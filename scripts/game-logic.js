@@ -16,6 +16,11 @@ let throwCount = 0;
 
 let roundCount = 0;
 
+// Random number generator.
+function getRandomInt() {
+    return Math.floor(Math.random() * 7);
+  }
+
   /**
      * Return the 5 face values of the dice.
      */
