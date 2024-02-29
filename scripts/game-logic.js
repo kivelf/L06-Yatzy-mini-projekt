@@ -5,34 +5,33 @@ export default function randomName() {
 }
 
 /* Array for dice values*/
-let diceValues = new Array(5);
+export let diceValues = new Array(5);
 
 // Variable for Number of times the 5 dice have been thrown.
 
 // 0 <= throwCount <= 3.
-let throwCount = 0;
+export let throwCount = 0;
 
 // Variable for roundCount
 
-let roundCount = 0;
+export let roundCount = 0;
 
 // Random number generator.
 function getRandomInt() {
-    return Math.floor(Math.random() * 7);
+    return Math.floor(Math.random() * 6) + 1;
   }
 
-  /**
-     * Return the 5 face values of the dice.
-     */
-function getValues() {
-
-}
+ 
 
  /**
      * Reset the throw count.
      */
 function resetThrowCount() {
-
+    throwCount = 0;
+    roundCount++;
+    for (let i = 0; i < diceValues.length; i++) {
+        diceValues[i] = 0;
+    }
 }
 
  /**
@@ -40,6 +39,13 @@ function resetThrowCount() {
      * Note: holdStatus[index] is true, if die no. index is hold (for index in [0..4]).
      */
 
+ function rollDice(holdStatus) {
+    for (let i = 0; i < holdStatus.length; i++){
+        if (!holdStatus[i]){
+            values[i] = getRandomInt();
+        }
+    }
+ }
 
  // -------------------------------------------------------------------------
 
@@ -50,6 +56,23 @@ function resetThrowCount() {
      * if you don't want use it.
      */
 
+function getResults() {
+        let results = new Array(15);
+        for (let i = 0; i < 6; i++) {
+            results[i] = sameValuePoints(i + 1);
+        }
+        results[6] = onePairPoints();
+        results[7] = twoPairPoints();
+        results[8] = threeSamePoints();
+        results[9] = fourSamePoints();
+        results[10] = fullHousePoints();
+        results[11] = smallStraightPoints();
+        results[12] = largeStraightPoints();
+        results[13] = chancePoints();
+        results[14] = yatzyPoints();
+
+        return results;
+    }
 
      // -------------------------------------------------------------------------
 
@@ -58,12 +81,20 @@ function resetThrowCount() {
     // Index 0 is not used.
     // Note: This method can be used in several of the following methods.
 
+    function frequency() {
+        let currentFrequency = new Array(7);
+        for (faceValue in diceValues){
+            currentFrequency[faceValue]++;
+        }
+        return currentFrequency;
+    }
 
     /**
      * Return same-value points for the given face value.<br/>
      * Returns 0, if no dice has the given face value.<br/>
      * Pre: 1 <= value <= 6;
      */
+    
   
 
 
