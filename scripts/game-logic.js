@@ -48,7 +48,7 @@ function getRandomInt() {
  export function rollDice(holdStatus) {
     for (let i = 0; i < holdStatus.length; i++){
         if (!holdStatus[i]){
-            values[i] = getRandomInt();
+            dices[i].value = getRandomInt();
         }
     }
  }
