@@ -1,5 +1,3 @@
-
-
 export default function randomName() {
     console.log("object");
 }
@@ -166,12 +164,45 @@ export function getResults() {
      * Return 0, if there aren't 3 dice with the same face value<br/>
      * and 2 other dice with the same but different face value.
      */
+    function fullHousePoints() {
+        let frequency = getFrequency();
+        let pairPoints = 0;
+        let triplePoints = threeSamePoints();
+        let fullHouse = 0;
+        if (triplePoints !== 0) {
+            for (let i = 1; i <= 6; i++) {
+                if (frequency[i] === 2) {
+                    pairPoints = i * 2;
+                    break; // Exit loop once pair is found
+                }
+            }
+        }
+        if (pairPoints !== 0) {
+            fullHouse = triplePoints + pairPoints;
+        }
+        return fullHouse;
+    }
     
 
     /**
      * Return points for small straight.<br/>
      * Return 0, if the dice aren't showing 1,2,3,4,5.
      */
+    function smallStraightPoints() {
+        let frequency = getFrequency();
+        let haveSmallStraight = true;
+        let smallStraight = 0;
+        for (let i = 1; i <= 5; i++) {
+            if (frequency[i] < 1) {
+                haveSmallStraight = false;
+                break; // exit the loop once a required value is missing
+            }
+        }
+        if (haveSmallStraight) {
+            smallStraight = 15; // the sum of 1,2,3,4,5
+        }
+        return smallStraight;
+    }
     
 
     /**
