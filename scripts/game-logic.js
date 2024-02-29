@@ -5,12 +5,16 @@ export default function randomName() {
 }
 
 /* Array for dice values*/
+let diceValues = new Array(5);
 
 // Variable for Number of times the 5 dice have been thrown.
 
 // 0 <= throwCount <= 3.
+let throwCount = 0;
 
 // Variable for roundCount
+
+let roundCount = 0;
 
   /**
      * Return the 5 face values of the dice.
@@ -110,7 +114,7 @@ function resetThrowCount() {
      */
     
     function chancePoints() {
-        
+
     }
 
     /**
