@@ -5,11 +5,11 @@ export default function randomName() {
 
 
 export const dices = [
-    {value: 0, id: 0, lockedState: true},
-    {value: 0, id: 0, lockedState: true},
-    {value: 0, id: 0, lockedState: true},
-    {value: 0, id: 0, lockedState: true},
-    {value: 0, id: 0, lockedState: true}
+    {value: 0, id: 0, lockedState: false},
+    {value: 0, id: 0, lockedState: false},
+    {value: 0, id: 0, lockedState: false},
+    {value: 0, id: 0, lockedState: false},
+    {value: 0, id: 0, lockedState: false}
 ];
 
 
@@ -45,10 +45,10 @@ function getRandomInt() {
      * Note: holdStatus[index] is true, if die no. index is hold (for index in [0..4]).
      */
 
- export function rollDice(holdStatus) {
-    for (let i = 0; i < holdStatus.length; i++){
-        if (!holdStatus[i]){
-            values[i] = getRandomInt();
+ export function rollDice() {
+    for (let i = 0; i < dices.length; i++){
+        if (!dices[i].lockedState){
+            dices[i].value = getRandomInt();
         }
     }
  }
@@ -63,45 +63,47 @@ function getRandomInt() {
      */
 
 export function getResults() {
-        let results = new Array(15);
-        for (let i = 0; i < 6; i++) {
-            results[i] = sameValuePoints(i + 1);
-        }
-        results[6] = onePairPoints();
-        results[7] = twoPairPoints();
-        results[8] = threeSamePoints();
-        results[9] = fourSamePoints();
-        results[10] = fullHousePoints();
-        results[11] = smallStraightPoints();
-        results[12] = largeStraightPoints();
-        results[13] = chancePoints();
-        results[14] = yatzyPoints();
-
-        return results;
+    let results = new Array(15);
+    for (let i = 0; i < 6; i++) {
+        results[i] = sameValuePoints(i + 1);
     }
+    results[6] = onePairPoints();
+    results[7] = twoPairPoints();
+    results[8] = threeSamePoints();
+    results[9] = fourSamePoints();
+    results[10] = fullHousePoints();
+    results[11] = smallStraightPoints();
+    results[12] = largeStraightPoints();
+    results[13] = chancePoints();
+    results[14] = yatzyPoints();
 
-     // -------------------------------------------------------------------------
+    return results;
+}
 
-    // Return an int[7] containing the frequency of face values.
-    // Frequency at index v is the number of dice with the face value v, 1 <= v <= 6.
-    // Index 0 is not used.
-    // Note: This method can be used in several of the following methods.
+ // -------------------------------------------------------------------------
 
-    export function frequency() {
-        let currentFrequency = new Array(7);
-        for (faceValue in diceValues){
-            currentFrequency[faceValue]++;
-        }
-        return currentFrequency;
+// Return an int[7] containing the frequency of face values.
+// Frequency at index v is the number of dice with the face value v, 1 <= v <= 6.
+// Index 0 is not used.
+// Note: This method can be used in several of the following methods.
+
+export function frequency() {
+    let currentFrequency = [0, 0, 0, 0, 0, 0, 0];
+    for (let i = 0; i < dices.length; i++) {
+        let yeetnumber = dices[i].value;
+        console.log(yeetnumber);
+        currentFrequency[yeetnumber]++;
     }
+    return currentFrequency;
+}
 
-    /**
+/**
      * Return same-value points for the given face value.<br/>
      * Returns 0, if no dice has the given face value.<br/>
      * Pre: 1 <= value <= 6;
      */
     export function sameValuePoints(value) {
-        let frequency = getFrequency();
+        let frequency = frequency();
         let sameValuePoints = frequency[value] * value;
         return sameValuePoints;
     }
@@ -112,7 +114,7 @@ export function getResults() {
      * Return 0, if there aren't 2 dice with the same face value.
      */
     export function onePairPoints() {
-        let frequency = getFrequency();
+        let frequency = frequency();
         let pairPoints = 0;
         for (let i = 6; i >= 1; i--) {
             if (frequency[i] >= 2) {
@@ -131,7 +133,7 @@ export function getResults() {
      * and 2 other dice with the same but different face value.
      */
     export function twoPairPoints() {
-        let frequency = getFrequency();
+        let frequency = frequency();
         let lowerPairPoints = 0;
         let highestPairPoints = onePairPoints();
         let doublePairPoints = 0;
