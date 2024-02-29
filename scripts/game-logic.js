@@ -36,7 +36,7 @@ function getRandomInt() {
     throwCount = 0;
     roundCount++;
     for (let i = 0; i < dices.length; i++) {
-        dices.value[i] = 0;
+        dices[i].value = 0;
     }
 }
 
