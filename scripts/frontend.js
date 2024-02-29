@@ -6,6 +6,10 @@ console.log(gameLogic.dices);
 
 gameLogic.rollDice();
 let idk = gameLogic.frequency();
+
+
+
+let rollBtn = document.querySelector()
 /* RollFunction 
 
 Den skal tjekke om nogen af terningerne er låste,
