@@ -11,7 +11,7 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     grid-gap: 20px;
-    max-width: 550px;
+    max-width: 600px;
     margin: auto;
     padding: 20px;
 }
@@ -38,41 +38,49 @@ body {
     grid-auto-rows: 15;
 }
 
-.grid-box-thicc {
-    display: grid;
-    grid-template-columns: repeat(2, 10fr);
-    width: 200px;
-}
-
-.grid-box-small {
+.grid-box-left {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-    padding-top: 100%;
-    vertical-align: top;
+    width: 240px;
+    padding: 10px;
+}
+
+.grid-box-middle,
+.grid-box-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100px;
+    padding: 10px;
 }
 
 .txtbox {
     border: 1px solid #45a049;
     border-radius: 5px;
-    margin: 5px;
-    height: 20px;
-    width: 70px;
+    margin: 4px;
+    height: 24px;
+    width: calc(100% - 5px); /* adjusted width to fit the grid */
+    box-sizing: border-box; /* ensures padding and border are included in width */
+    vertical-align: bottom; /* align input boxes to the bottom */
 }
+
+/* Adjust alignment for input fields */
+.grid-item {
+    display: flex;
+    align-items: center; /* Vertically center text */
+    padding-right: 5px; /* Add padding to separate text from input box */
+}
+
 
 .dice-container {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.dice_regular, .dice_inactive {
+.dice_regular, .dice_inactive, .dice_animation {
     display: inline-block;
     margin: 5px;
-    width: 90px;
+    width: 95px;
     height: auto;
-    text-align: center;
-    line-height: 50px;
-    font-size: 24px;
 }
 
 #turnDisplay {
@@ -93,36 +101,7 @@ body {
 
 .roll-button:hover {
     background-color: #45a049;
-}
-
-.scorecard {
-    border-collapse: separate;
-    width: 100%;
-    border-spacing: 0 8px; /* set spacing between rows (vertical spacing) */
-}
-
-.scorecard th {
-    padding: 0px 0px 0px 15px;
-    text-align: left;
-    font-weight: normal;
-    background-color: transparent;
-}
-
-.scorecard td {
-    border: 1px solid #4CAF50;
-    padding: 2px 25px 2px 25px;
-    text-align: center;
-    font-weight: normal;
-    background-color: white; /* set background color for all cells */
-}
-
-.scorecard input {
-    width: 100%;
-    border: none;
-    text-align: center;
-}
-
-.scorecard td span.score {
-    display: inline-block;
-    width: 100%; /* make the span fill the entire width of the cell */
+    transform: scale(1.05); /* increase size by 5% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* add a slight shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* add smooth transition */
 }
