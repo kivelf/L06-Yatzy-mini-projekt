@@ -64,14 +64,28 @@ function resetThrowCount() {
      * Returns 0, if no dice has the given face value.<br/>
      * Pre: 1 <= value <= 6;
      */
+    function sameValuePoints(value) {
+        let frequency = getFrequency();
+        let sameValuePoints = frequency[value] * value;
+        return sameValuePoints;
+    }
   
-
-
 
     /**
      * Return points for one pair (for the face value giving the highest points).<br/>
      * Return 0, if there aren't 2 dice with the same face value.
      */
+    function onePairPoints() {
+        let frequency = getFrequency();
+        let pairPoints = 0;
+        for (let i = 6; i >= 1; i--) {
+            if (frequency[i] >= 2) {
+                pairPoints = i * 2;
+                break; // exit loop once pair is found since it'll be the highest found one
+            }
+        }
+        return pairPoints;
+    }
     
 
     /**
@@ -80,6 +94,28 @@ function resetThrowCount() {
      * Return 0, if there aren't 2 dice with the same face value<br/>
      * and 2 other dice with the same but different face value.
      */
+    function twoPairPoints() {
+        let frequency = getFrequency();
+        let lowerPairPoints = 0;
+        let highestPairPoints = onePairPoints();
+        let doublePairPoints = 0;
+        if (highestPairPoints !== 0) {
+            for (let i = 6; i >= 1; i--) {
+                if (frequency[i] >= 2) {
+                    if (i * 2 !== highestPairPoints) {
+                        lowerPairPoints = i * 2;
+                        break; // exit loop once lower pair is found
+                    }
+                }
+            }
+        }
+        if (lowerPairPoints !== 0) {
+            doublePairPoints = lowerPairPoints + highestPairPoints;
+        }
+        return doublePairPoints;
+    }
+
+    
     
 
     /**
