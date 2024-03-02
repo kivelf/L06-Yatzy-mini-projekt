@@ -37,6 +37,16 @@ body {
     height: auto;
 }
 
+.lockedDice {
+    display: inline-block;
+    margin: 5px;
+    width: 95px;
+    height: auto;
+    opacity:0.3;
+    /* background-color:#ff0000; */
+    /* pointer-events:none; */
+}
+
 #turnDisplay {
     margin-bottom: 5px;
 }
