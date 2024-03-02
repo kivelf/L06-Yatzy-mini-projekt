@@ -31,7 +31,7 @@ function rollButton() {
             const setPermanentDiceValue = async (j) => {
                 let yeet = (Math.random() * 400)+200;
                 await delay(yeet);
-                diceHolders[j].src = `./assets/dice-animation/dice_animation${j}.gif`;
+                diceHolders[j].src = `./assets/dice-animation/dice_animation_${j}.gif`;
                 
                 let diceValue = gameLogic.dices[j-1].value;
     
