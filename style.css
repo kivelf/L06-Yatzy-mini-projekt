@@ -42,12 +42,12 @@ body {
     margin: 5px;
     width: 95px;
     height: auto;
-    opacity:0.3;
+    opacity:0.65;
     /* background-color:#ff0000; */
     /* pointer-events:none; */
 }
 
-#turnDisplay {
+#throwDisplay {
     margin-bottom: 5px;
 }
 

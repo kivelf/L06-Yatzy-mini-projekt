@@ -41,8 +41,8 @@ function rollButton() {
             setPermanentDiceValue(i);
         }
     }
-    updateScoreFields();
     updateThrowCount();
+    updateScoreFieldsWithDelay();
 }
 
 function updateScoreFields() {
@@ -53,10 +53,19 @@ function updateScoreFields() {
     }
 }
 
+function updateScoreFieldsWithDelay() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            updateScoreFields();
+            resolve();
+        }, 2500); // delay of 2.5 seconds
+    });
+}
+
 function updateThrowCount() {
-    let turnDisplay = document.getElementById("turnDisplay");
-    console.log(turnDisplay);
-    turnDisplay.textContent = `Turn ${gameLogic.throwCount}`;
+    let throwDisplay = document.getElementById("throwDisplay");
+    console.log(throwDisplay);
+    throwDisplay.textContent = `Throw ${gameLogic.throwCount}`;
 }
 
 function lockDice(event) {
