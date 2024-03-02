@@ -63,6 +63,7 @@ function lockDice(event) {
     let index = event.target.id.split("-")[2];
     if (gameLogic.dices[index-1].lockedState) {
         gameLogic.dices[index-1].lockedState = false;
+        event.target.className = "dice_regular";
     } else {
         event.target.className = "lockedDice";
         gameLogic.dices[index-1].lockedState = true;
