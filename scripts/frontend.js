@@ -62,6 +62,8 @@ function updateScoreFields() {
     let results = gameLogic.getResults();
 
     for (let i = 0; i < inputfields.length; i++) {
+
+        
         if (inputfields[i].className != "inputSelected") {
             inputfields[i].value = results[i];
         }
