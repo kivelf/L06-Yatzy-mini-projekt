@@ -70,7 +70,7 @@ async function rollButton() {
             setPermanentDiceValue(i);
         }
     }
-    await delay(2600);
+    await delay(2700);
     updateThrowCount();
     updateScoreFields();
     canLockScoreField = true;
@@ -80,7 +80,7 @@ async function rollButton() {
 function resetDices() {
     for (let i = 0; i < diceImages.length; i++) {
         diceImages[i].className = "dice_regular";
-        diceImages[i].src = "./assets/empty-dice.png";
+        diceImages[i].src = `./assets/empty-dice_${i}.png`;
     }
 }
 
