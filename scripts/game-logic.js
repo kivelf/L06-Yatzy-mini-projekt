@@ -27,15 +27,15 @@ function getRandomInt() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
-function newRound() {
+export function newRound() {
     resetDices();
     resetThrowCount();
 }
 
 function resetDices() {
-    for (d in dices) {
-        d.value = 0;
-        d.lockedState = false;
+    for (let i = 0; i < dices.length; i++) {
+        dices[i].value = 0;
+        dices[i].lockedState = false;
     }
 }
 /**
