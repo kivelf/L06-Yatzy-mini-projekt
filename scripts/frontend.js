@@ -6,6 +6,10 @@ import * as gameLogic from "./game-logic.js";
 
 let canLockScoreField = false;
 
+let canRoll = true;
+
+let gameEnded = false;
+
 // Selection of elements for Eventhandling
 let inputfields = document.getElementsByTagName("input");
 
@@ -13,6 +17,8 @@ let rollBtn = document.querySelector(".roll-button");
 
 let diceImages = document.getElementsByTagName("img");
 
+updateScoreFields();
+updateSumAndBonusAndTotal();
 
 // Adding event listeners
 
@@ -26,7 +32,17 @@ for (let i = 0; i < inputfields.length; i++) {
     inputfields[i].addEventListener("click", lockScoreField);
 }
 
-function rollButton() {
+async function rollButton() {
+    if (!canRoll) {
+        return;
+    }
+    if (gameLogic.roundCount == 15) {
+        if (window.confirm("Spillet er slut, vil du starte et nyt spil?")) {
+            restartGame();
+        } else {
+            return;
+        }
+    }
     if (gameLogic.throwCount == 3) {
         return;
     }
@@ -35,7 +51,8 @@ function rollButton() {
     gameLogic.rollDice();
 
     let diceHolders = [];
-
+    canRoll = false;
+    canLockScoreField = false;
     for (let i = 1; i < 6; i++) {
         diceHolders[i] = document.getElementById(`dice-holder-${i}`);
 
@@ -53,9 +70,18 @@ function rollButton() {
             setPermanentDiceValue(i);
         }
     }
+    await delay(2600);
     updateThrowCount();
-    updateScoreFieldsWithDelay();
+    updateScoreFields();
     canLockScoreField = true;
+    canRoll = true;
+}
+
+function resetDices() {
+    for (let i = 0; i < diceImages.length; i++) {
+        diceImages[i].className = "dice_regular";
+        diceImages[i].src = "./assets/empty-dice.png";
+    }
 }
 
 function updateScoreFields() {
@@ -67,15 +93,6 @@ function updateScoreFields() {
             inputfields[i].value = results[i];
         }
     }
-}
-
-function updateScoreFieldsWithDelay() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            updateScoreFields();
-            resolve();
-        }, 2500); // delay of 2.5 seconds
-    });
 }
 
 function updateThrowCount() {
@@ -104,6 +121,8 @@ function lockScoreField(event) {
         canLockScoreField = false;
         gameLogic.newRound();
         updateThrowCount();
+        resetDices();
+        updateScoreFields();
     }
 }
 
@@ -127,5 +146,9 @@ function updateSumAndBonusAndTotal() {
     let totalSum = sumAmount + parseInt(bonusField.value);
 
     document.getElementById("total").value = totalSum;
+}
 
+function restartGame() {
+    gameLogic.newGame();
+    location.reload();
 }

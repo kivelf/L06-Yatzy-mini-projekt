@@ -22,6 +22,7 @@ export let throwCount = 0;
 
 export let roundCount = 0;
 
+
 // Random number generator. Generates a number between 1 and 6
 function getRandomInt() {
     return Math.floor(Math.random() * 6) + 1;
@@ -30,6 +31,12 @@ function getRandomInt() {
 export function newRound() {
     resetDices();
     resetThrowCount();
+}
+
+export function newGame() {
+    throwCount = 0;
+    roundCount = 0;
+    resetDices();
 }
 
 function resetDices() {
@@ -269,7 +276,7 @@ export function yatzyPoints() {
     let yatzy = 0;
     for (let i = 1; i <= 6; i++) {
         if (frequencies[i] == 5) {
-            yatzy = 50;
+            yatzy = (frequencies[i] * i) + 50;
         }
     }
     return yatzy;
