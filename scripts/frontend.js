@@ -62,9 +62,8 @@ function updateScoreFields() {
     let results = gameLogic.getResults();
 
     for (let i = 0; i < inputfields.length; i++) {
-
-        
-        if (inputfields[i].className != "inputSelected") {
+        let inputfield = inputfields[i];
+        if (inputfield.className != "inputSelected" && inputfield.id != "sum" && inputfield.id != "bonus" && inputfield.id != "total") {
             inputfields[i].value = results[i];
         }
     }
