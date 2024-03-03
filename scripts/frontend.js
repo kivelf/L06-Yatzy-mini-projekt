@@ -2,6 +2,10 @@ import * as gameLogic from "./game-logic.js";
 
 
 
+// Basic game logic for front-end (Advanced logic in Game-logic file)
+
+let canLockScoreField = false;
+
 // Selection of elements for Eventhandling
 let inputfields = document.getElementsByTagName("input");
 
@@ -19,7 +23,7 @@ for (let i = 0; i < diceImages.length; i++) {
 }
 
 for (let i = 0; i < inputfields.length; i++) {
-
+    inputfields[i].addEventListener("click", lockScoreField);
 }
 
 function rollButton() {
@@ -51,6 +55,7 @@ function rollButton() {
     }
     updateThrowCount();
     updateScoreFieldsWithDelay();
+    canLockScoreField = true;
 }
 
 function updateScoreFields() {
@@ -91,8 +96,12 @@ function lockDice(event) {
 }
 
 function lockScoreField(event) {
-    let field = event.target;
-
+    if (canLockScoreField) {
+        let field = event.target;
+        field.className = "inputSelected";
+        updateSumAndBonusAndTotal();
+        canLockScoreField = false;
+    }
 }
 
 function updateSumAndBonusAndTotal() {
@@ -103,9 +112,9 @@ function updateSumAndBonusAndTotal() {
         sumAmount += parseInt(inputElements[i].value);
     }
 
-    document.getElementById("id-sum").value = sumAmount;
+    document.getElementById("id-sum-text").value = sumAmount;
 
-    let bonusField = document.getElementById("id-bonus");
+    let bonusField = document.getElementById("id-bonus-text");
     if (sumAmount >= 63) {
         bonusField.value = 50;
     } else {
@@ -114,6 +123,6 @@ function updateSumAndBonusAndTotal() {
 
     let totalSum = sumAmount + parseInt(bonusField.value);
 
-    document.getElementById("id-total").value = totalSum;
+    document.getElementById("id-total-text").value = totalSum;
 
 }
