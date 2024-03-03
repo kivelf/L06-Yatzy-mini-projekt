@@ -123,6 +123,11 @@ body {
     justify-self: end; /* Align the text boxes to the right within their grid cells */
 }
 
+.inputSelected {
+    background-color: #45a049;
+    color: white;
+}
+
 
 /*_________________________________________*/
 #id-1s {
