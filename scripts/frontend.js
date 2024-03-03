@@ -112,9 +112,9 @@ function updateSumAndBonusAndTotal() {
         sumAmount += parseInt(inputElements[i].value);
     }
 
-    document.getElementById("id-sum-text").value = sumAmount;
+    document.getElementById("sum").value = sumAmount;
 
-    let bonusField = document.getElementById("id-bonus-text");
+    let bonusField = document.getElementById("bonus");
     if (sumAmount >= 63) {
         bonusField.value = 50;
     } else {
@@ -123,6 +123,6 @@ function updateSumAndBonusAndTotal() {
 
     let totalSum = sumAmount + parseInt(bonusField.value);
 
-    document.getElementById("id-total-text").value = totalSum;
+    document.getElementById("total").value = totalSum;
 
 }

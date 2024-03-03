@@ -121,9 +121,23 @@ body {
     box-sizing: border-box; /* ensures padding and border are included in width */
     vertical-align: bottom; /* align input boxes to the bottom */
     justify-self: end; /* Align the text boxes to the right within their grid cells */
+    background-color: white;
+    color: black;
 }
 
 .inputSelected {
+    border: 1px solid #45a049;
+    border-radius: 5px;
+    margin: 5px;
+    margin-left: 5px; /* adjust margin-left to move the text boxes to the left */
+    height: 24px;
+    width: 90%;
+    
+    align-items: right;
+    box-sizing: border-box; /* ensures padding and border are included in width */
+    vertical-align: bottom; /* align input boxes to the bottom */
+    justify-self: end; /* Align the text boxes to the right within their grid cells */
+
     background-color: #45a049;
     color: white;
 }
