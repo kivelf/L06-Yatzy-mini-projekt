@@ -81,7 +81,7 @@ function updateScoreFieldsWithDelay() {
 
 function updateThrowCount() {
     let throwDisplay = document.getElementById("throwDisplay");
-    console.log(throwDisplay);
+    console.log(gameLogic.throwCount);
     throwDisplay.textContent = `Throw ${gameLogic.throwCount}`;
 }
 
@@ -103,6 +103,8 @@ function lockScoreField(event) {
         field.className = "inputSelected";
         updateSumAndBonusAndTotal();
         canLockScoreField = false;
+        gameLogic.newRound();
+        updateThrowCount();
     }
 }
 
