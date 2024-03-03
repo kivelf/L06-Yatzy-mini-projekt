@@ -80,6 +80,29 @@ function lockDice(event) {
 
 }
 
+function updateSumAndBonusAndTotal() {
+    let inputElements = document.getElementsByClassName("inputSelected");
+    let sumAmount = 0;
+
+    for (let i = 0; i < inputElements.length; i++) {
+        sumAmount += parseInt(inputElements[i].value);
+    }
+
+    document.getElementById("id-sum").value = sumAmount;
+
+    let bonusField = document.getElementById("id-bonus");
+    if (sumAmount >= 63) {
+        bonusField.value = 50;
+    } else {
+        bonusField.value = 0;
+    }
+
+    let totalSum = sumAmount + parseInt(bonusField.value);
+
+    document.getElementById("id-total").value = totalSum;
+
+}
+
 /* RollFunction 
 
 Den skal tjekke om nogen af terningerne er låste,
