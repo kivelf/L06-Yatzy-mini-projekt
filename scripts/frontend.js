@@ -7,7 +7,7 @@ let canLockScoreField = false;
 
 let canRoll = true;
 
-let gameEnded = false;
+
 
 
 // Selection of elements for Eventhandling
@@ -70,7 +70,7 @@ async function rollButton() {
             setPermanentDiceValue(i);
         }
     }
-    await delay(2700);
+    await delay(2100);
     updateThrowCount();
     updateScoreFields();
     canLockScoreField = true;
@@ -97,7 +97,6 @@ function updateScoreFields() {
 
 function updateThrowCount() {
     let throwDisplay = document.getElementById("throwDisplay");
-    console.log(gameLogic.throwCount);
     throwDisplay.textContent = `Throw ${gameLogic.throwCount}`;
 }
 
@@ -136,7 +135,6 @@ function updateSumAndBonusAndTotal() {
     let extraSum = 0;
 
     let inputElements = document.getElementsByClassName("inputSelected");
-    console.log(inputElements);
 
     for (let i = 0; i < inputElements.length; i++) {
         if (singleValueids.includes(inputElements[i].id)) {
