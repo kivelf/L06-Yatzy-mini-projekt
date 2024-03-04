@@ -129,7 +129,7 @@ function lockScoreField(event) {
 function updateSumAndBonusAndTotal() {
     let singleValueids = [];
     for (let i = 0; i < 6; i++) {
-        singleValueids[i] = `id-${i+1}s-text`;
+        singleValueids[i] = `input-${i+1}s`;
     }
 
     let sumAmount = 0;
@@ -140,7 +140,6 @@ function updateSumAndBonusAndTotal() {
 
     for (let i = 0; i < inputElements.length; i++) {
         if (singleValueids.includes(inputElements[i].id)) {
-        // if (singleValueids.includes(inputElements[i].id)) {
             sumAmount += parseInt(inputElements[i].value)
         } else {
             extraSum += parseInt(inputElements[i].value)
