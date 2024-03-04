@@ -48,6 +48,10 @@ async function rollButton() {
     if (gameLogic.throwCount == 3) {
         return;
     }
+    if (checkAllDicesLocked()) {
+        alert("Du har låst alle terninger, aflås en for at rulle");
+        return;
+    }
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     gameLogic.rollDice();
@@ -101,6 +105,9 @@ function updateThrowCount() {
 }
 
 function lockDice(event) {
+    if (gameLogic.throwCount == 0) {
+        return;
+    }
     let index = event.target.id.split("-")[2];
     if (gameLogic.dices[index - 1].lockedState) {
         gameLogic.dices[index - 1].lockedState = false;
@@ -110,6 +117,17 @@ function lockDice(event) {
         gameLogic.dices[index - 1].lockedState = true;
     }
 
+}
+
+function checkAllDicesLocked() {
+    let dices = gameLogic.dices;
+    let allDicesLocked = true;
+    for (let i = 0; i < dices.length; i++) {
+        if (!dices[i].lockedState) {
+            allDicesLocked = false;
+        }
+    }
+    return allDicesLocked;
 }
 
 function lockScoreField(event) {
