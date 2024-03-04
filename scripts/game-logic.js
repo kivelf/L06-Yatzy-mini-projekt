@@ -5,11 +5,11 @@ export default function randomName() {
 
 
 export const dices = [
-    { value: 0, id: 0, lockedState: false },
-    { value: 0, id: 0, lockedState: false },
-    { value: 0, id: 0, lockedState: false },
-    { value: 0, id: 0, lockedState: false },
-    { value: 0, id: 0, lockedState: false }
+    { value: 0, lockedState: false },
+    { value: 0, lockedState: false },
+    { value: 0, lockedState: false },
+    { value: 0, lockedState: false },
+    { value: 0, lockedState: false }
 ];
 
 
@@ -69,17 +69,6 @@ export function rollDice() {
     }
     throwCount++;
 }
-
-// -------------------------------------------------------------------------
-
-/**
- * Return all results possible with the current face values.<br/>
- * The order of the results is the same as on the score board.<br/>
- * Note: This is an optional method. Comment this method out,<br/>
- * if you don't want use it.
- */
-
-
 
 // -------------------------------------------------------------------------
 
@@ -143,7 +132,7 @@ export function twoPairPoints() {
             if (frequencies[i] >= 2) {
                 if (i * 2 !== highestPairPoints) {
                     lowerPairPoints = i * 2;
-                    break; // exit loop once lower pair is found
+                    break;
                 }
             }
         }

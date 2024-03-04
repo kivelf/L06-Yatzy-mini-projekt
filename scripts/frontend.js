@@ -3,12 +3,12 @@ import * as gameLogic from "./game-logic.js";
 
 
 // Basic game logic for front-end (Advanced logic in Game-logic file)
-
 let canLockScoreField = false;
 
 let canRoll = true;
 
 let gameEnded = false;
+
 
 // Selection of elements for Eventhandling
 let inputfields = document.getElementsByTagName("input");
@@ -29,7 +29,9 @@ for (let i = 0; i < diceImages.length; i++) {
 }
 
 for (let i = 0; i < inputfields.length; i++) {
-    inputfields[i].addEventListener("click", lockScoreField);
+    if (inputfields[i].id != "sum" && inputfields[i].id != "total" && inputfields[i].id != "bonus") {
+        inputfields[i].addEventListener("click", lockScoreField);
+    }
 }
 
 async function rollButton() {
@@ -127,11 +129,24 @@ function lockScoreField(event) {
 }
 
 function updateSumAndBonusAndTotal() {
-    let inputElements = document.getElementsByClassName("inputSelected");
+    let singleValueids = [];
+    for (let i = 0; i < 6; i++) {
+        singleValueids[i] = `id-${i+1}s-text`;
+    }
+
     let sumAmount = 0;
+    let extraSum = 0;
+
+    let inputElements = document.getElementsByClassName("inputSelected");
+    console.log(inputElements);
 
     for (let i = 0; i < inputElements.length; i++) {
-        sumAmount += parseInt(inputElements[i].value);
+        if (singleValueids.includes(inputElements[i].id)) {
+        // if (singleValueids.includes(inputElements[i].id)) {
+            sumAmount += parseInt(inputElements[i].value)
+        } else {
+            extraSum += parseInt(inputElements[i].value)
+        }
     }
 
     document.getElementById("sum").value = sumAmount;
@@ -143,7 +158,7 @@ function updateSumAndBonusAndTotal() {
         bonusField.value = 0;
     }
 
-    let totalSum = sumAmount + parseInt(bonusField.value);
+    let totalSum = sumAmount + extraSum + parseInt(bonusField.value);
 
     document.getElementById("total").value = totalSum;
 }
