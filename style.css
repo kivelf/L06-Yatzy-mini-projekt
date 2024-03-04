@@ -35,6 +35,7 @@ body {
     margin: 5px;
     width: 95px;
     height: auto;
+    border: 2px ridge rgba(211, 220, 50, .0);
 }
 
 .lockedDice {
